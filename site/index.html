@@ -9,22 +9,44 @@
       content="Pepper is a video editor and clipper for VTubers and streamers. VODs in, clips, shorts, full edits out."
     >
     <title>Pepper — Video Editor &amp; Clipper</title>
-    <link rel="stylesheet" href="styles.css?v=20261023-2305">
+    <link rel="stylesheet" href="styles.css?v=20261023-2315">
   </head>
   <body>
     <div class="ambient-backdrop" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header">
-      <a class="wordmark" href="#top" aria-label="Pepper, home">pepper<span aria-hidden="true">✳</span></a>
-      <nav aria-label="Main navigation">
-        <a href="#work">Work</a>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-      </nav>
-      <a class="nav-contact" href="#contact">Hire me <span aria-hidden="true">→</span></a>
-    </header>
+    <nav class="desktop-icons" aria-label="Desktop shortcuts">
+      <a class="desktop-icon" href="#work">
+        <span class="desktop-icon-art icon-work" aria-hidden="true"><span>▶</span></span>
+        <span>My Work</span>
+      </a>
+      <a class="desktop-icon" href="#services">
+        <span class="desktop-icon-art icon-services" aria-hidden="true"><span>✂</span></span>
+        <span>Services</span>
+      </a>
+      <a class="desktop-icon" href="#contact">
+        <span class="desktop-icon-art icon-contact" aria-hidden="true"><span>@</span></span>
+        <span>Contact</span>
+      </a>
+    </nav>
 
+    <div class="portfolio-window" id="portfolio-window">
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Pepper, home"><span class="window-app-icon" aria-hidden="true">P</span> Pepper — Video Editor &amp; Clipper</a>
+      <div class="window-controls" role="group" aria-label="Window controls">
+        <button type="button" data-window-action="minimize" aria-label="Minimize portfolio window">_</button>
+        <button type="button" data-window-action="maximize" aria-label="Maximize portfolio window">□</button>
+        <button type="button" data-window-action="close" aria-label="Close portfolio window">×</button>
+      </div>
+    </header>
+    <nav class="window-toolbar" aria-label="Main navigation">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#pricing">Pricing</a>
+      <a class="toolbar-contact" href="#contact">Contact</a>
+    </nav>
+    <div class="window-content">
     <main id="main">
       <section class="hero section-wrap" id="top" aria-labelledby="hero-title">
         <div class="hero-copy">
@@ -311,6 +333,32 @@
       <p>Video editor &amp; clipper.</p>
       <a href="#top">BACK TO TOP ↑</a>
     </footer>
+    </div>
+    </div>
+    <footer class="taskbar">
+      <button class="start-button" type="button" aria-expanded="false" aria-controls="start-menu">
+        <span class="start-logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        Start
+      </button>
+      <button class="taskbar-window-button" type="button" aria-label="Restore Pepper portfolio window">
+        <span class="taskbar-app-icon" aria-hidden="true">P</span>
+        Pepper Portfolio
+      </button>
+      <div class="system-tray">
+        <span class="tray-status" aria-hidden="true">◖</span>
+        <span class="tray-language">EN</span>
+        <time id="taskbar-clock" aria-label="Current local time"></time>
+      </div>
+    </footer>
+    <nav class="start-menu" id="start-menu" aria-label="Start menu" hidden>
+      <div class="start-menu-heading"><span class="start-menu-avatar">P</span><strong>Pepper</strong></div>
+      <a href="#work"><span aria-hidden="true">▶</span> Selected Work</a>
+      <a href="#services"><span aria-hidden="true">✂</span> Services &amp; Toolkit</a>
+      <a href="#about"><span aria-hidden="true">★</span> Client Feedback</a>
+      <a href="#pricing"><span aria-hidden="true">$</span> Pricing</a>
+      <a href="#contact"><span aria-hidden="true">✉</span> Contact Pepper</a>
+      <div class="start-menu-footer">Portfolio ’26 · Video editing</div>
+    </nav>
     <script>
       async function refreshProfileStats() {
         const statsUrl = new URL("stats.json", document.baseURI);
@@ -352,6 +400,71 @@
           button.replaceWith(player);
         });
       });
+
+      const portfolioWindow = document.querySelector("#portfolio-window");
+      const taskbarWindowButton = document.querySelector(".taskbar-window-button");
+      const startButton = document.querySelector(".start-button");
+      const startMenu = document.querySelector("#start-menu");
+
+      function setWindowOpen(isOpen) {
+        portfolioWindow.hidden = !isOpen;
+        taskbarWindowButton.setAttribute("aria-pressed", String(isOpen));
+      }
+
+      document.querySelectorAll("[data-window-action]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const action = button.dataset.windowAction;
+          if (action === "maximize") {
+            portfolioWindow.classList.toggle("maximized");
+            button.setAttribute("aria-pressed", String(portfolioWindow.classList.contains("maximized")));
+          } else {
+            setWindowOpen(false);
+            taskbarWindowButton.focus();
+          }
+        });
+      });
+
+      document.querySelectorAll(".desktop-icon").forEach((shortcut) => {
+        shortcut.addEventListener("click", () => setWindowOpen(true));
+      });
+
+      taskbarWindowButton.addEventListener("click", () => {
+        setWindowOpen(true);
+        startMenu.hidden = true;
+        startButton.setAttribute("aria-expanded", "false");
+      });
+
+      startButton.addEventListener("click", () => {
+        startMenu.hidden = !startMenu.hidden;
+        startButton.setAttribute("aria-expanded", String(!startMenu.hidden));
+        if (!startMenu.hidden) {
+          startMenu.querySelector("a").focus();
+        }
+      });
+
+      startMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          setWindowOpen(true);
+          startMenu.hidden = true;
+          startButton.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!startMenu.hidden && !startMenu.contains(event.target) && !startButton.contains(event.target)) {
+          startMenu.hidden = true;
+          startButton.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      function updateTaskbarClock() {
+        document.querySelector("#taskbar-clock").textContent = new Intl.DateTimeFormat(undefined, {
+          hour: "numeric",
+          minute: "2-digit"
+        }).format(new Date());
+      }
+      updateTaskbarClock();
+      window.setInterval(updateTaskbarClock, 30_000);
 
       if (
         "IntersectionObserver" in window &&
