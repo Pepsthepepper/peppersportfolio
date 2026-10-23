@@ -297,21 +297,21 @@ p {
 }
 
 .ticker-track {
-  display: grid;
-  min-height: 3rem;
-  place-items: center;
-  padding-inline: 1rem;
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 32s linear infinite;
 }
 
 .ticker-track span {
-  max-width: 100%;
-  padding-block: 0.8rem;
+  flex: none;
+  min-width: 50vw;
+  padding: 0.8rem 1rem;
   font-family: var(--mono);
-  font-size: clamp(0.62rem, 1.2vw, 0.8rem);
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-align: center;
-  text-wrap: balance;
+  white-space: nowrap;
 }
 
 .stats-strip {
@@ -1052,5 +1052,26 @@ p {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .ticker-track {
+    display: grid;
+    width: 100%;
+    place-items: center;
+    animation: none;
+  }
+
+  .ticker-track span:not(:first-child) {
+    display: none;
+  }
+
+  .ticker-track span {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 1rem;
+    text-align: center;
+    text-wrap: balance;
+    white-space: normal;
   }
 }
