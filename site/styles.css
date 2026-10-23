@@ -3,6 +3,8 @@
   --ink: #17121d;
   --paper: #f5f0e8;
   --muted: #b6afbd;
+  --surface: #211a29;
+  --surface-raised: #1d1824;
   --lime: #d4ff4f;
   --blue: #7bd8d0;
   --pink: #ff2d95;
@@ -289,9 +291,9 @@ p {
 
 .ticker {
   overflow: hidden;
-  border-block: 1px solid var(--pink);
-  background: var(--lime);
-  color: var(--ink);
+  border-block: 1px solid rgb(245 240 232 / 12%);
+  background: var(--surface);
+  color: var(--muted);
 }
 
 .ticker-track {
@@ -347,11 +349,11 @@ p {
 }
 
 .stats-strip a:nth-child(2) strong {
-  color: var(--pink);
+  color: var(--paper);
 }
 
 .stats-strip a:nth-child(3) strong {
-  color: var(--blue);
+  color: var(--muted);
 }
 
 .stats-strip span {
@@ -392,13 +394,19 @@ p {
   overflow: hidden;
   border: 1px solid rgb(245 240 232 / 17%);
   border-radius: 0.9rem;
-  background: #211a29;
+  background: var(--surface);
   transition: border-color 180ms ease, transform 180ms ease;
 }
 
-.video-card:hover {
+.video-card:hover,
+.video-card:focus-within {
   transform: translateY(-4px);
   border-color: rgb(212 255 79 / 65%);
+}
+
+.video-card:focus-within {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
 }
 
 .video-card:last-child:nth-child(3n + 1) {
@@ -406,8 +414,73 @@ p {
 }
 
 .video-frame {
+  position: relative;
   aspect-ratio: 16 / 9;
   background: #0e0c11;
+}
+
+.video-preview {
+  position: relative;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  place-items: center;
+  overflow: hidden;
+  border: 0;
+  background: #0e0c11;
+  color: var(--paper);
+  cursor: pointer;
+}
+
+.video-preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 240ms ease, opacity 240ms ease;
+}
+
+.video-preview:hover img,
+.video-preview:focus-visible img {
+  transform: scale(1.035);
+  opacity: 0.78;
+}
+
+.video-preview:focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: -4px;
+}
+
+.play-icon {
+  position: absolute;
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  place-items: center;
+  border: 1px solid rgb(245 240 232 / 60%);
+  border-radius: 50%;
+  background: rgb(23 18 29 / 78%);
+  color: var(--paper);
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.play-icon::after {
+  width: 0;
+  height: 0;
+  margin-left: 0.2rem;
+  border-top: 0.55rem solid transparent;
+  border-bottom: 0.55rem solid transparent;
+  border-left: 0.8rem solid currentColor;
+  content: "";
+}
+
+.video-preview:hover .play-icon,
+.video-preview:focus-visible .play-icon {
+  transform: scale(1.08);
+  border-color: var(--lime);
+  background: var(--lime);
+  color: var(--ink);
 }
 
 .video-frame iframe {
@@ -480,10 +553,9 @@ p {
 }
 
 .service-card:hover {
-  border-color: var(--lime);
-  background: var(--lime);
-  box-shadow: 4px 4px 0 var(--pink);
-  color: var(--ink);
+  border-color: rgb(212 255 79 / 65%);
+  background: var(--surface-raised);
+  box-shadow: 3px 3px 0 rgb(255 45 149 / 45%);
 }
 
 .service-number {
@@ -491,10 +563,6 @@ p {
   color: var(--lime);
   font-family: var(--mono);
   font-size: 0.72rem;
-}
-
-.service-card:hover .service-number {
-  color: var(--ink);
 }
 
 .service-card h3 {
@@ -511,10 +579,6 @@ p {
   line-height: 1.55;
 }
 
-.service-card:hover p {
-  color: #26212a;
-}
-
 .card-link {
   display: inline-flex;
   gap: 0.55rem;
@@ -522,10 +586,6 @@ p {
   color: var(--lime);
   font-size: 0.65rem;
   text-decoration: none;
-}
-
-.service-card:hover .card-link {
-  color: var(--ink);
 }
 
 .toolkit-row {
@@ -644,20 +704,20 @@ p {
 }
 
 .pricing {
-  background: var(--lime);
-  color: var(--ink);
+  background: var(--surface-raised);
+  color: var(--paper);
 }
 
 .pricing .eyebrow {
-  color: rgb(23 18 29 / 65%);
+  color: var(--muted);
 }
 
 .pricing-heading h2 span {
-  color: #7150cb;
+  color: var(--lime);
 }
 
 .pricing .heading-note {
-  color: rgb(23 18 29 / 75%);
+  color: var(--muted);
 }
 
 .price-grid {
@@ -669,22 +729,26 @@ p {
 .price-card {
   min-height: 12rem;
   padding: clamp(1.4rem, 4vw, 2rem);
-  border: 1px solid rgb(23 18 29 / 25%);
+  border: 1px solid rgb(245 240 232 / 14%);
   border-radius: 1rem;
+  background: var(--ink);
 }
 
 .price-label {
   margin-bottom: 1rem;
+  color: var(--lime);
 }
 
 .price-card h3 {
   margin-bottom: 0.8rem;
+  color: var(--lime);
   font-size: clamp(1.7rem, 4vw, 2.7rem);
   letter-spacing: -0.06em;
   line-height: 1;
 }
 
 .price-card h3 span {
+  color: var(--muted);
   font-size: 0.95rem;
   font-weight: 400;
   letter-spacing: 0;
@@ -693,6 +757,7 @@ p {
 .price-card p:not(.price-label) {
   max-width: 32rem;
   margin-bottom: 0.4rem;
+  color: var(--muted);
   font-size: 0.9rem;
   line-height: 1.55;
 }
