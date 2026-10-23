@@ -198,7 +198,7 @@ p {
 
 .hero h1 {
   margin-bottom: 1.35rem;
-  font-size: clamp(3rem, 5.7vw, 5rem);
+  font-size: clamp(3rem, 5.7vw, 4.5rem);
   line-height: 0.92;
   text-wrap: nowrap;
 }
