@@ -9,20 +9,60 @@
       content="Pepper is a video editor and clipper for VTubers and streamers. VODs in, clips, shorts, full edits out."
     >
     <title>Pepper — Video Editor &amp; Clipper</title>
-    <link rel="stylesheet" href="styles.css?v=20261023-2315">
+    <link rel="stylesheet" href="styles.css?v=20261023-2355">
+    <noscript>
+      <style>
+        body { height: auto; min-height: 100vh; overflow: auto; padding-bottom: 3rem; }
+        .desktop-windows { position: static; inset: auto; }
+        .xp-window,
+        .xp-window.stats-strip,
+        .xp-window.is-open,
+        .xp-window.stats-strip.is-open {
+          position: relative !important;
+          top: auto !important;
+          left: auto !important;
+          display: block !important;
+          width: min(100% - 2rem, 900px) !important;
+          height: auto !important;
+          min-height: 0 !important;
+          margin: 1rem auto !important;
+          padding: 1rem !important;
+          overflow: visible !important;
+          transform: none !important;
+        }
+        .xp-window-content { overflow: visible; }
+        .taskbar, .start-menu, .desktop-icons { display: none !important; }
+      </style>
+    </noscript>
   </head>
   <body>
     <div class="ambient-backdrop" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <nav class="desktop-icons" aria-label="Desktop shortcuts">
+      <a class="desktop-icon" href="#top">
+        <span class="desktop-icon-art icon-work" aria-hidden="true"><span>⌂</span></span>
+        <span>Pepper</span>
+      </a>
       <a class="desktop-icon" href="#work">
         <span class="desktop-icon-art icon-work" aria-hidden="true"><span>▶</span></span>
         <span>My Work</span>
       </a>
+      <a class="desktop-icon" href="#stats">
+        <span class="desktop-icon-art icon-stats" aria-hidden="true"><span>↗</span></span>
+        <span>Statistics</span>
+      </a>
       <a class="desktop-icon" href="#services">
         <span class="desktop-icon-art icon-services" aria-hidden="true"><span>✂</span></span>
         <span>Services</span>
+      </a>
+      <a class="desktop-icon" href="#about">
+        <span class="desktop-icon-art icon-feedback" aria-hidden="true"><span>★</span></span>
+        <span>Feedback</span>
+      </a>
+      <a class="desktop-icon" href="#pricing">
+        <span class="desktop-icon-art icon-pricing" aria-hidden="true"><span>$</span></span>
+        <span>Pricing</span>
       </a>
       <a class="desktop-icon" href="#contact">
         <span class="desktop-icon-art icon-contact" aria-hidden="true"><span>@</span></span>
@@ -30,25 +70,8 @@
       </a>
     </nav>
 
-    <div class="portfolio-window" id="portfolio-window">
-    <header class="site-header">
-      <a class="wordmark" href="#top" aria-label="Pepper, home"><span class="window-app-icon" aria-hidden="true">P</span> Pepper — Video Editor &amp; Clipper</a>
-      <div class="window-controls" role="group" aria-label="Window controls">
-        <button type="button" data-window-action="minimize" aria-label="Minimize portfolio window">_</button>
-        <button type="button" data-window-action="maximize" aria-label="Maximize portfolio window">□</button>
-        <button type="button" data-window-action="close" aria-label="Close portfolio window">×</button>
-      </div>
-    </header>
-    <nav class="window-toolbar" aria-label="Main navigation">
-      <a href="#work">Work</a>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#pricing">Pricing</a>
-      <a class="toolbar-contact" href="#contact">Contact</a>
-    </nav>
-    <div class="window-content">
-    <main id="main">
-      <section class="hero section-wrap" id="top" aria-labelledby="hero-title">
+    <main id="main" class="desktop-windows">
+      <section class="hero section-wrap xp-window is-open" id="top" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="eyebrow"><span class="portfolio-year">PORTFOLIO ’26</span><span class="status-dot" aria-hidden="true"></span> AVAILABLE FOR WORK</p>
           <h1 id="hero-title">I EDIT VIDEOS PEOPLE<br><span>ACTUALLY FINISH.</span><span class="hero-dot" aria-hidden="true"> ●</span></h1>
@@ -82,7 +105,7 @@
         </div>
       </div>
 
-      <section class="stats-strip" aria-label="Portfolio statistics" aria-live="polite">
+      <section class="stats-strip xp-window" id="stats" aria-label="Portfolio statistics" aria-live="polite">
         <a href="https://ytjobs.co/talent/profile/479496?r=912" target="_blank" rel="noreferrer">
           <strong data-profile-stat="videos">14</strong><span>VIDEOS CUT</span>
         </a>
@@ -94,7 +117,7 @@
         </a>
       </section>
 
-      <section class="work section-wrap section-pad" id="work" aria-labelledby="work-title">
+      <section class="work section-wrap section-pad xp-window" id="work" aria-labelledby="work-title">
         <div class="section-heading">
           <div>
             <p class="eyebrow">01 / THE GOOD STUFF</p>
@@ -190,7 +213,7 @@
         </div>
       </section>
 
-      <section class="services section-pad" id="services" aria-labelledby="services-title">
+      <section class="services section-pad xp-window" id="services" aria-labelledby="services-title">
         <div class="section-wrap">
           <div class="section-heading">
             <div>
@@ -239,7 +262,7 @@
         </div>
       </section>
 
-      <section class="about section-wrap section-pad" id="about" aria-labelledby="about-title">
+      <section class="about section-wrap section-pad xp-window" id="about" aria-labelledby="about-title">
         <div class="receipts-heading">
           <div>
             <p class="eyebrow">03 / RECEIPTS</p>
@@ -270,7 +293,7 @@
         </div>
       </section>
 
-      <section class="pricing section-pad" id="pricing" aria-labelledby="pricing-title">
+      <section class="pricing section-pad xp-window" id="pricing" aria-labelledby="pricing-title">
         <div class="section-wrap">
           <div class="section-heading pricing-heading">
             <div>
@@ -304,7 +327,7 @@
         </div>
       </section>
 
-      <section class="contact section-pad" id="contact" aria-labelledby="contact-title">
+      <section class="contact section-pad xp-window" id="contact" aria-labelledby="contact-title">
         <div class="section-wrap contact-inner">
           <p class="eyebrow">05 / YOUR TURN</p>
           <h2 id="contact-title">LET’S MAKE<br>SOMETHING LOUD<span>.</span></h2>
@@ -326,24 +349,18 @@
           <p class="contact-footer">© 2026 PEPPER ✦ COMEDY · ENTERTAINMENT · GAMING</p>
         </div>
       </section>
-    </main>
-
     <footer class="site-footer section-wrap">
       <a class="wordmark" href="#top">pepper<span aria-hidden="true">✳</span></a>
       <p>Video editor &amp; clipper.</p>
       <a href="#top">BACK TO TOP ↑</a>
     </footer>
-    </div>
-    </div>
+    </main>
     <footer class="taskbar">
       <button class="start-button" type="button" aria-expanded="false" aria-controls="start-menu">
         <span class="start-logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
         Start
       </button>
-      <button class="taskbar-window-button" type="button" aria-label="Restore Pepper portfolio window">
-        <span class="taskbar-app-icon" aria-hidden="true">P</span>
-        Pepper Portfolio
-      </button>
+      <div class="taskbar-apps" aria-label="Open windows"></div>
       <div class="system-tray">
         <span class="tray-status" aria-hidden="true">◖</span>
         <span class="tray-language">EN</span>
@@ -352,7 +369,9 @@
     </footer>
     <nav class="start-menu" id="start-menu" aria-label="Start menu" hidden>
       <div class="start-menu-heading"><span class="start-menu-avatar">P</span><strong>Pepper</strong></div>
+      <a href="#top"><span aria-hidden="true">⌂</span> Pepper Home</a>
       <a href="#work"><span aria-hidden="true">▶</span> Selected Work</a>
+      <a href="#stats"><span aria-hidden="true">↗</span> Profile Statistics</a>
       <a href="#services"><span aria-hidden="true">✂</span> Services &amp; Toolkit</a>
       <a href="#about"><span aria-hidden="true">★</span> Client Feedback</a>
       <a href="#pricing"><span aria-hidden="true">$</span> Pricing</a>
@@ -401,37 +420,203 @@
         });
       });
 
-      const portfolioWindow = document.querySelector("#portfolio-window");
-      const taskbarWindowButton = document.querySelector(".taskbar-window-button");
+      const ticker = document.querySelector(".ticker");
+      document.querySelector("#top").append(ticker);
+      document.querySelector("#contact").append(document.querySelector(".site-footer"));
+      const windows = [...document.querySelectorAll(".xp-window")];
+      const taskbarApps = document.querySelector(".taskbar-apps");
       const startButton = document.querySelector(".start-button");
       const startMenu = document.querySelector("#start-menu");
+      let topZIndex = 10;
+      const windowTitles = {
+        top: "Pepper — Video Editor & Clipper",
+        stats: "YT Jobs — Portfolio Statistics",
+        work: "Selected Work — Video Clips",
+        services: "Services & Toolkit",
+        about: "Client Feedback & Experience",
+        pricing: "Pricing — Clear Rates",
+        contact: "Contact Pepper"
+      };
 
-      function setWindowOpen(isOpen) {
-        portfolioWindow.hidden = !isOpen;
-        taskbarWindowButton.setAttribute("aria-pressed", String(isOpen));
+      function focusWindow(xpWindow) {
+        topZIndex += 1;
+        xpWindow.style.zIndex = String(topZIndex);
+        windows.forEach((item) => item.classList.toggle("is-active", item === xpWindow));
+        document.querySelectorAll(".taskbar-window-button").forEach((button) => {
+          button.setAttribute("aria-pressed", String(
+            button.dataset.windowTarget === xpWindow.id && xpWindow.classList.contains("is-open")
+          ));
+        });
       }
 
-      document.querySelectorAll("[data-window-action]").forEach((button) => {
-        button.addEventListener("click", () => {
-          const action = button.dataset.windowAction;
-          if (action === "maximize") {
-            portfolioWindow.classList.toggle("maximized");
-            button.setAttribute("aria-pressed", String(portfolioWindow.classList.contains("maximized")));
-          } else {
-            setWindowOpen(false);
-            taskbarWindowButton.focus();
-          }
+      function openWindow(xpWindow) {
+        xpWindow.classList.add("is-open");
+        focusWindow(xpWindow);
+      }
+
+      function minimizeWindow(xpWindow) {
+        xpWindow.classList.remove("is-open");
+        xpWindow.classList.remove("is-active");
+        const remaining = windows.filter((item) => item.classList.contains("is-open"));
+        if (remaining.length) focusWindow(remaining[remaining.length - 1]);
+        else {
+          document.querySelectorAll(".taskbar-window-button").forEach((button) => {
+            button.setAttribute("aria-pressed", "false");
+          });
+        }
+      }
+
+      function closeWindow(xpWindow) {
+        minimizeWindow(xpWindow);
+      }
+
+      function windowForTarget(target) {
+        const element = document.getElementById(target);
+        return element?.closest(".xp-window") ?? null;
+      }
+
+      function restoreWindow(xpWindow) {
+        if (xpWindow.classList.contains("is-open")) {
+          if (xpWindow.classList.contains("is-active")) minimizeWindow(xpWindow);
+          else focusWindow(xpWindow);
+          return;
+        }
+        openWindow(xpWindow);
+      }
+
+      windows.forEach((xpWindow, index) => {
+        const id = xpWindow.id;
+        const title = windowTitles[id] ?? "Pepper Portfolio";
+        const appIcon = document.createElement("span");
+        appIcon.className = "window-app-icon";
+        appIcon.setAttribute("aria-hidden", "true");
+        appIcon.textContent = "P";
+
+        const titleText = document.createElement("span");
+        titleText.className = "window-title-text";
+        titleText.textContent = title;
+
+        const titlebar = document.createElement("header");
+        titlebar.className = "xp-titlebar";
+        titlebar.setAttribute("data-drag-handle", "");
+
+        const titleGroup = document.createElement("span");
+        titleGroup.className = "xp-window-title";
+        titleGroup.append(appIcon, titleText);
+        titlebar.append(titleGroup);
+
+        const controls = document.createElement("span");
+        controls.className = "window-controls";
+        controls.setAttribute("role", "group");
+        controls.setAttribute("aria-label", `${title} window controls`);
+
+        for (const [action, symbol, label] of [
+          ["minimize", "_", `Minimize ${title}`],
+          ["maximize", "□", `Maximize ${title}`],
+          ["close", "×", `Close ${title}`]
+        ]) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.dataset.windowAction = action;
+          button.setAttribute("aria-label", label);
+          button.textContent = symbol;
+          controls.append(button);
+        }
+        titlebar.append(controls);
+
+        const content = document.createElement("div");
+        content.className = "xp-window-content";
+        while (xpWindow.firstChild) content.append(xpWindow.firstChild);
+        xpWindow.append(titlebar, content);
+        xpWindow.setAttribute("aria-label", title);
+        xpWindow.style.setProperty("--window-offset", String(index));
+        if (id !== "top") xpWindow.classList.remove("is-open");
+
+        const taskbarButton = document.createElement("button");
+        taskbarButton.className = "taskbar-window-button";
+        taskbarButton.type = "button";
+        taskbarButton.dataset.windowTarget = id;
+        taskbarButton.setAttribute("aria-label", `Restore ${title}`);
+        taskbarButton.setAttribute("aria-pressed", String(xpWindow.classList.contains("is-open")));
+        taskbarButton.innerHTML = '<span class="taskbar-app-icon" aria-hidden="true">P</span>';
+        taskbarButton.append(document.createTextNode(title));
+        taskbarApps.append(taskbarButton);
+
+        taskbarButton.addEventListener("click", () => restoreWindow(xpWindow));
+        xpWindow.addEventListener("pointerdown", () => focusWindow(xpWindow));
+        xpWindow.querySelectorAll("[data-window-action]").forEach((button) => {
+          button.addEventListener("click", (event) => {
+            event.stopPropagation();
+            if (button.dataset.windowAction === "maximize") {
+              xpWindow.classList.toggle("maximized");
+              button.setAttribute("aria-pressed", String(xpWindow.classList.contains("maximized")));
+            } else if (button.dataset.windowAction === "minimize") {
+              minimizeWindow(xpWindow);
+            } else {
+              closeWindow(xpWindow);
+            }
+          });
         });
+
+        titlebar.addEventListener("pointerdown", (event) => {
+          if (event.button !== 0 || event.target.closest("button")) return;
+          if (xpWindow.classList.contains("maximized")) return;
+          const rect = xpWindow.getBoundingClientRect();
+          const offsetX = event.clientX - rect.left;
+          const offsetY = event.clientY - rect.top;
+          titlebar.setPointerCapture(event.pointerId);
+
+          function moveWindow(moveEvent) {
+            const maxLeft = Math.max(0, window.innerWidth - rect.width);
+            const maxTop = Math.max(0, window.innerHeight - Math.min(48, rect.height));
+            xpWindow.style.left = `${Math.min(maxLeft, Math.max(0, moveEvent.clientX - offsetX))}px`;
+            xpWindow.style.top = `${Math.min(maxTop, Math.max(0, moveEvent.clientY - offsetY))}px`;
+            xpWindow.style.transform = "none";
+          }
+
+          function stopDragging() {
+            titlebar.removeEventListener("pointermove", moveWindow);
+            titlebar.removeEventListener("pointerup", stopDragging);
+            titlebar.removeEventListener("pointercancel", stopDragging);
+          }
+
+          titlebar.addEventListener("pointermove", moveWindow);
+          titlebar.addEventListener("pointerup", stopDragging);
+          titlebar.addEventListener("pointercancel", stopDragging);
+        });
+
+        xpWindow.addEventListener("click", (event) => {
+          const link = event.target.closest('a[href^="#"]');
+          if (!link) return;
+          const targetWindow = windowForTarget(link.hash.slice(1));
+          if (!targetWindow) return;
+          event.preventDefault();
+          openWindow(targetWindow);
+          const target = document.getElementById(link.hash.slice(1));
+          if (target && target !== targetWindow) target.scrollIntoView({ block: "start" });
+          else targetWindow.querySelector(".xp-window-content").scrollTop = 0;
+        });
+
+        if (xpWindow.classList.contains("is-open")) focusWindow(xpWindow);
       });
 
-      document.querySelectorAll(".desktop-icon").forEach((shortcut) => {
-        shortcut.addEventListener("click", () => setWindowOpen(true));
-      });
-
-      taskbarWindowButton.addEventListener("click", () => {
-        setWindowOpen(true);
+      function openLinkWindow(link) {
+        const targetWindow = windowForTarget(link.hash.slice(1));
+        if (targetWindow) {
+          openWindow(targetWindow);
+          const target = document.getElementById(link.hash.slice(1));
+          if (target && target !== targetWindow) target.scrollIntoView({ block: "start" });
+          else targetWindow.querySelector(".xp-window-content").scrollTop = 0;
+        }
         startMenu.hidden = true;
         startButton.setAttribute("aria-expanded", "false");
+      }
+
+      document.querySelectorAll(".desktop-icon, .start-menu a[href^='#']").forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          openLinkWindow(link);
+        });
       });
 
       startButton.addEventListener("click", () => {
@@ -440,14 +625,6 @@
         if (!startMenu.hidden) {
           startMenu.querySelector("a").focus();
         }
-      });
-
-      startMenu.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          setWindowOpen(true);
-          startMenu.hidden = true;
-          startButton.setAttribute("aria-expanded", "false");
-        });
       });
 
       document.addEventListener("click", (event) => {

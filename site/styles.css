@@ -2282,3 +2282,605 @@ body {
     display: none;
   }
 }
+
+body {
+  background: #73afe5 url("assets/windows-xp-bliss.jpg") center center / cover no-repeat fixed;
+}
+
+.ambient-backdrop {
+  display: none;
+}
+
+.desktop-icons {
+  top: 1rem;
+  left: 0.8rem;
+  gap: 0.75rem;
+  max-height: calc(100svh - 4rem);
+  overflow-y: auto;
+}
+
+.desktop-icon {
+  min-height: 4.75rem;
+  cursor: pointer;
+}
+
+.icon-stats {
+  background: linear-gradient(145deg, #fff, #a1e5e4 55%, #379cb7);
+  color: #17667c;
+}
+
+.icon-feedback {
+  background: linear-gradient(145deg, #fff, #fff1a2 55%, #e6b333);
+  color: #89630c;
+}
+
+.icon-pricing {
+  background: linear-gradient(145deg, #fff, #b9d9f6 55%, #568bc2);
+  color: #194e80;
+}
+
+.desktop-windows {
+  position: fixed;
+  z-index: 1;
+  inset: 0 0 2.75rem;
+  pointer-events: none;
+}
+
+.xp-window {
+  position: fixed;
+  z-index: 10;
+  top: calc(50% + (var(--window-offset, 0) * 1rem));
+  left: calc(50% + (var(--window-offset, 0) * 1.25rem));
+  display: none;
+  width: min(900px, calc(100vw - 14rem));
+  height: min(760px, calc(100svh - 8rem));
+  flex-direction: column;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  border: 1px solid #003c74;
+  border-radius: 0.65rem 0.65rem 0 0;
+  background: #ece9d8;
+  box-shadow: 2px 3px 0 rgb(255 255 255 / 65%) inset, 0 12px 30px rgb(5 34 61 / 42%);
+  pointer-events: auto;
+}
+
+.xp-window.is-open {
+  display: flex;
+}
+
+.xp-window.maximized {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw;
+  height: calc(100svh - 2.75rem);
+  transform: none !important;
+  border-radius: 0;
+}
+
+.xp-titlebar {
+  display: flex;
+  align-self: stretch;
+  min-height: 2.25rem;
+  flex: 0 0 2.25rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.2rem 0.2rem 0.2rem 0.55rem;
+  border-bottom: 1px solid #003e7c;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background: linear-gradient(180deg, #398ef2 0%, #1462c4 48%, #0750ad 50%, #286fcb 100%);
+  box-shadow: 1px 1px 0 #90c5ff inset;
+  color: white;
+  font-family: Tahoma, "Segoe UI", sans-serif;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.xp-titlebar:active {
+  cursor: grabbing;
+}
+
+.xp-window:not(.is-active) .xp-titlebar {
+  background: linear-gradient(180deg, #9bb8d8, #668bb7 50%, #5279a5);
+  box-shadow: 1px 1px 0 #d0e2f5 inset;
+}
+
+.xp-window-title {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.45rem;
+  overflow: hidden;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  text-shadow: 1px 1px 1px #003c74;
+  white-space: nowrap;
+}
+
+.window-title-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.window-app-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: 0 0 1.25rem;
+}
+
+.window-controls {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.18rem;
+}
+
+.window-controls button {
+  display: grid;
+  width: 1.35rem;
+  height: 1.3rem;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #fff;
+  border-radius: 0.2rem;
+  background: linear-gradient(#82b7f0, #286cc2);
+  box-shadow: 1px 1px 0 rgb(255 255 255 / 60%) inset, 1px 1px 2px rgb(0 0 0 / 35%);
+  color: white;
+  font-family: Tahoma, "Segoe UI", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 1px 1px #164d8a;
+  cursor: pointer;
+}
+
+.window-controls button:last-child {
+  width: 1.45rem;
+  background: linear-gradient(#f8a29a, #df3526 52%, #b91910);
+  font-size: 1rem;
+}
+
+.xp-window-content {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: linear-gradient(#edf4fb, #dce7f3);
+  scrollbar-color: #80a9d3 #e5edf6;
+}
+
+.xp-window-content::-webkit-scrollbar {
+  width: 16px;
+}
+
+.xp-window-content::-webkit-scrollbar-track {
+  border-left: 1px solid #a0b7cc;
+  background: #e6edf5;
+}
+
+.xp-window-content::-webkit-scrollbar-thumb {
+  border: 1px solid #6d93ba;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #c1d8ef, #8bb4de 45%, #c1d8ef);
+  box-shadow: 1px 1px 0 #fff inset;
+}
+
+.xp-window.hero,
+.xp-window.work,
+.xp-window.about,
+.xp-window.services,
+.xp-window.pricing,
+.xp-window.contact {
+  width: min(900px, calc(100vw - 14rem));
+  margin: 0;
+  padding: 0;
+  border: 1px solid #003c74;
+  border-radius: 0.65rem 0.65rem 0 0;
+  background: #ece9d8;
+  box-shadow: 2px 3px 0 rgb(255 255 255 / 65%) inset, 0 12px 30px rgb(5 34 61 / 42%);
+}
+
+.xp-window.hero > .xp-window-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(220px, 0.75fr);
+  align-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: clamp(1.25rem, 4vw, 3rem);
+}
+
+.xp-window.hero .hero {
+  min-height: 0;
+  grid-template-columns: minmax(0, 1.45fr) minmax(220px, 0.75fr);
+  gap: 1rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.xp-window.hero h1 {
+  font-size: clamp(2rem, 3vw, 2.7rem);
+}
+
+.xp-window.hero > .xp-window-content > .hero-copy {
+  grid-column: 1;
+}
+
+.xp-window.hero > .xp-window-content > .hero-art {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.xp-window.hero .ticker {
+  grid-column: 1 / -1;
+  margin-inline: calc(clamp(1.25rem, 4vw, 3rem) * -1);
+}
+
+.xp-window.stats-strip {
+  display: none;
+  width: min(660px, calc(100vw - 14rem));
+  height: auto;
+  min-height: 12rem;
+  align-content: start;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 2rem 1.25rem;
+  border: 1px solid #003c74;
+  border-radius: 0 0 0.35rem 0.35rem;
+  background: #edf4fb;
+  box-shadow: 2px 3px 0 rgb(255 255 255 / 65%) inset, 0 12px 30px rgb(5 34 61 / 42%);
+}
+
+.xp-window.stats-strip.is-open {
+  display: grid;
+}
+
+.xp-window.stats-strip .stats-strip a {
+  min-height: 7rem;
+}
+
+.xp-window.work > .xp-window-content,
+.xp-window.services > .xp-window-content,
+.xp-window.about > .xp-window-content,
+.xp-window.pricing > .xp-window-content,
+.xp-window.contact > .xp-window-content {
+  padding: 1.5rem;
+}
+
+.xp-window.work {
+  background: #edf4fb;
+}
+
+.xp-window.work > .xp-window-content > .section-heading {
+  margin-top: 0;
+}
+
+.xp-window.work > .xp-window-content {
+  padding-top: 1.5rem;
+}
+
+.xp-window.work::before,
+.xp-window.services::before,
+.xp-window.about::before,
+.xp-window.pricing::before,
+.xp-window.contact::before {
+  content: none;
+}
+
+.xp-window.services {
+  background: #edf4fb;
+}
+
+.xp-window.services > .xp-window-content > .section-wrap,
+.xp-window.pricing > .xp-window-content > .section-wrap {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.xp-window.services .section-wrap::before,
+.xp-window.pricing .section-wrap::before {
+  content: none;
+}
+
+.xp-window.services .services {
+  padding: 0;
+  background: transparent;
+}
+
+.xp-window.about {
+  background: #edf4fb;
+}
+
+.xp-window.about > .xp-window-content {
+  padding-top: 1.5rem;
+}
+
+.xp-window.about .about {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.xp-window.about::before {
+  content: none;
+}
+
+.xp-window.pricing {
+  background: #edf4fb;
+}
+
+.xp-window.pricing .pricing {
+  padding: 0;
+  background: transparent;
+}
+
+.xp-window.contact {
+  background: #edf4fb;
+}
+
+.xp-window.contact .contact {
+  padding: 0;
+  background: transparent;
+}
+
+.xp-window.contact .contact-inner {
+  width: 100%;
+  padding: 1.5rem;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.xp-window.contact .contact-inner::before {
+  content: none;
+}
+
+.xp-window.contact .site-footer {
+  margin: 1rem 0 0;
+}
+
+.xp-window.hero {
+  display: none;
+  flex-direction: column;
+  grid-template-columns: none;
+  gap: 0;
+  height: min(620px, calc(100svh - 8rem));
+  margin: 0;
+  padding: 0;
+  border: 1px solid #003c74;
+  border-radius: 0.65rem 0.65rem 0 0;
+  background: #ece9d8;
+  box-shadow: 2px 3px 0 rgb(255 255 255 / 65%) inset, 0 12px 30px rgb(5 34 61 / 42%);
+}
+
+.xp-window.hero.is-open {
+  display: flex;
+}
+
+.xp-window.stats-strip {
+  display: none;
+  flex-direction: column;
+  align-content: normal;
+}
+
+.xp-window.stats-strip.is-open {
+  display: flex;
+}
+
+.xp-window.stats-strip > .xp-window-content {
+  display: grid;
+  align-content: start;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 1.25rem;
+}
+
+.xp-window.about {
+  margin: 0;
+  padding: 0;
+  border: 1px solid #003c74;
+  border-radius: 0.65rem 0.65rem 0 0;
+  background: #ece9d8;
+  box-shadow: 2px 3px 0 rgb(255 255 255 / 65%) inset, 0 12px 30px rgb(5 34 61 / 42%);
+}
+
+.xp-window.services,
+.xp-window.pricing,
+.xp-window.contact {
+  border: 1px solid #003c74;
+  border-radius: 0.65rem 0.65rem 0 0;
+  background: #ece9d8;
+  box-shadow: 2px 3px 0 rgb(255 255 255 / 65%) inset, 0 12px 30px rgb(5 34 61 / 42%);
+}
+
+.xp-window .service-card,
+.xp-window .price-card,
+.xp-window .experience-card,
+.xp-window .testimonial {
+  color: #173b5e;
+}
+
+.taskbar-apps {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  gap: 0.2rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.taskbar-apps::-webkit-scrollbar {
+  display: none;
+}
+
+.taskbar-window-button {
+  min-width: 5.5rem;
+  max-width: 10.5rem;
+  flex: 1 1 8rem;
+  text-overflow: ellipsis;
+}
+
+.taskbar-window-button[aria-pressed="true"] {
+  background: linear-gradient(180deg, #0b4ea0, #276eb8);
+  box-shadow: 1px 1px 0 #0a468f inset, -1px -1px 0 #6ba5dc inset;
+}
+
+.start-menu {
+  z-index: 6;
+  max-height: calc(100svh - 3.5rem);
+  overflow: auto;
+}
+
+@media (max-width: 1140px) {
+  .desktop-icons {
+    display: none;
+  }
+
+  .xp-window {
+    left: 50%;
+  }
+}
+
+@media (max-width: 900px) {
+  .xp-window,
+  .xp-window.hero,
+  .xp-window.work,
+  .xp-window.about,
+  .xp-window.services,
+  .xp-window.pricing,
+  .xp-window.contact {
+    width: calc(100vw - 2rem);
+  }
+
+  .xp-window.stats-strip {
+    width: calc(100vw - 2rem);
+  }
+
+}
+
+@media (max-width: 720px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  .xp-window,
+  .xp-window.hero,
+  .xp-window.work,
+  .xp-window.about,
+  .xp-window.services,
+  .xp-window.pricing,
+  .xp-window.contact {
+    top: 0.4rem;
+    left: 50%;
+    width: calc(100vw - 0.75rem);
+    height: calc(100svh - 3.15rem);
+    transform: translateX(-50%);
+  }
+
+  .xp-window.stats-strip {
+    top: 0.4rem;
+    left: 50%;
+    width: calc(100vw - 0.75rem);
+    height: auto;
+    transform: translateX(-50%);
+  }
+
+  .xp-window.hero > .xp-window-content {
+    display: block;
+    padding: 1.25rem;
+  }
+
+  .xp-window.hero {
+    height: calc(100svh - 3.15rem);
+  }
+
+  .xp-window.hero .hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .xp-window.hero > .xp-window-content > .hero-art {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .xp-window.hero .ticker {
+    margin-inline: -1.25rem;
+  }
+
+  .xp-window.work > .xp-window-content,
+  .xp-window.services > .xp-window-content,
+  .xp-window.about > .xp-window-content,
+  .xp-window.pricing > .xp-window-content,
+  .xp-window.contact > .xp-window-content {
+    padding: 1rem;
+  }
+
+  .taskbar {
+    gap: 0.25rem;
+    padding-inline: 0.15rem;
+  }
+
+  .start-button {
+    flex-basis: 4.8rem;
+  }
+
+  .taskbar-apps {
+    gap: 0.15rem;
+  }
+
+  .taskbar-window-button {
+    min-width: 2.5rem;
+    max-width: 5rem;
+    flex: 1 1 3rem;
+    gap: 0.25rem;
+    padding-inline: 0.25rem;
+    font-size: 0;
+  }
+
+  .taskbar-app-icon {
+    flex: 0 0 1.25rem;
+  }
+
+  .system-tray {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .xp-titlebar {
+    min-height: 2rem;
+    flex-basis: 2rem;
+  }
+
+  .xp-window-title {
+    font-size: 0.68rem;
+  }
+
+  .window-controls button {
+    width: 1.1rem;
+  }
+
+  .window-controls button:last-child {
+    width: 1.25rem;
+  }
+
+  .taskbar-window-button {
+    min-width: 1.9rem;
+    max-width: 2.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .xp-window {
+    scroll-behavior: auto;
+  }
+}
