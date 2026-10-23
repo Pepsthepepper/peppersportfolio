@@ -59,16 +59,17 @@
         </div>
       </div>
 
-      <section class="stats-strip" aria-label="Portfolio statistics">
+      <section class="stats-strip" aria-label="Portfolio statistics" aria-live="polite">
         <a href="https://ytjobs.co/talent/profile/479496?r=912" target="_blank" rel="noreferrer">
-          <strong>12</strong><span>VIDEOS CUT</span>
+          <strong data-profile-stat="videos">14</strong><span>VIDEOS CUT</span>
         </a>
         <a href="https://ytjobs.co/talent/profile/479496?r=912" target="_blank" rel="noreferrer">
-          <strong>16.4K</strong><span>VIEWS</span>
+          <strong data-profile-stat="views">19.96K</strong><span>VIEWS</span>
         </a>
         <a href="https://ytjobs.co/talent/profile/479496?r=912" target="_blank" rel="noreferrer">
-          <strong>606</strong><span>LIKES</span>
+          <strong data-profile-stat="likes">798</strong><span>LIKES</span>
         </a>
+        <p class="stats-source">Profile stats refreshed hourly from <a href="https://ytjobs.co/talent/profile/479496?r=912" target="_blank" rel="noreferrer">YT Jobs</a>.</p>
       </section>
 
       <section class="work section-wrap section-pad" id="work" aria-labelledby="work-title">
@@ -311,6 +312,31 @@
       <a href="#top">BACK TO TOP ↑</a>
     </footer>
     <script>
+      async function refreshProfileStats() {
+        const statsUrl = new URL("stats.json", document.baseURI);
+        statsUrl.searchParams.set("v", Date.now().toString());
+
+        try {
+          const response = await fetch(statsUrl, { cache: "no-store" });
+          if (!response.ok) {
+            throw new Error(`Stats request failed with HTTP ${response.status}`);
+          }
+
+          const stats = await response.json();
+          for (const key of ["videos", "views", "likes"]) {
+            const value = stats[key];
+            if (typeof value !== "string" || !value.trim()) {
+              throw new Error(`Invalid YT Jobs ${key} statistic`);
+            }
+            document.querySelector(`[data-profile-stat="${key}"]`).textContent = value;
+          }
+        } catch (error) {
+          console.warn("Could not refresh YT Jobs profile stats; showing the last published values.", error);
+        }
+      }
+
+      refreshProfileStats();
+
       document.querySelectorAll(".video-preview").forEach((button) => {
         button.addEventListener("click", () => {
           const videoId = button.dataset.videoId;

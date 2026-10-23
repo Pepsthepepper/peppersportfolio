@@ -334,6 +334,10 @@ p {
   border: 0;
 }
 
+.stats-strip a:nth-of-type(3) {
+  border: 0;
+}
+
 .stats-strip a:hover {
   background: rgb(255 255 255 / 4%);
 }
@@ -361,6 +365,23 @@ p {
   font-family: var(--mono);
   font-size: 0.62rem;
   letter-spacing: 0.12em;
+}
+
+.stats-source {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0.7rem 0;
+  border-top: 1px solid rgb(245 240 232 / 12%);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  text-align: center;
+}
+
+.stats-source a {
+  color: var(--paper);
+  text-decoration-color: rgb(245 240 232 / 40%);
+  text-underline-offset: 0.15em;
 }
 
 .section-heading {

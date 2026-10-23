@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -26,6 +28,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+      - name: Refresh YT Jobs profile stats
+        run: node scripts/sync-ytjobs-stats.mjs
+        continue-on-error: ${{ github.event_name == 'push' }}
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
