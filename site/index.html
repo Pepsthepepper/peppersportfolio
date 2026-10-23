@@ -9,9 +9,10 @@
       content="Pepper is a video editor and clipper for VTubers and streamers. VODs in, clips, shorts, full edits out."
     >
     <title>Pepper — Video Editor &amp; Clipper</title>
-    <link rel="stylesheet" href="styles.css?v=20261023-2247">
+    <link rel="stylesheet" href="styles.css?v=20261023-2250">
   </head>
   <body>
+    <div class="ambient-backdrop" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
@@ -351,6 +352,32 @@
           button.replaceWith(player);
         });
       });
+
+      if (
+        "IntersectionObserver" in window &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        const revealTargets = document.querySelectorAll(
+          ".hero-copy > *, .hero-art, .stats-strip a, .section-heading, " +
+          ".video-card, .service-card, .toolkit-row, .receipts-grid > *, " +
+          ".price-card, .contact-inner, .site-footer > *"
+        );
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.dataset.revealVisible = "";
+              observer.unobserve(entry.target);
+            }
+          }
+        }, { threshold: 0.12, rootMargin: "0px 0px -2% 0px" });
+
+        revealTargets.forEach((element, index) => {
+          element.dataset.reveal = "";
+          element.style.setProperty("--reveal-delay", `${(index % 4) * 65}ms`);
+          revealObserver.observe(element);
+        });
+        document.documentElement.classList.add("motion-ready");
+      }
     </script>
   </body>
 </html>
